@@ -11,7 +11,7 @@ public class CalculatorService {
     * - Multiplicação
     * - Divisão
     * - Média
-    * Este serviço é utilizado pelo CalculatorController para expor os endpoints da API
+    * Este serviço é utilizado pelo CalculatorController para expor os endpoints da API.
     */
     public double add(double a, double b) {
         return a + b;
