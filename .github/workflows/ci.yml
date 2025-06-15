@@ -1,4 +1,4 @@
-name: Dev Calc API CI
+name: CI Pipeline
 
 on:
   push:
@@ -70,6 +70,9 @@ jobs:
     needs: build
     if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.run_lint == 'true' }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -80,6 +83,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_JAVA: true
           VALIDATE_MARKDOWN: true
+          VALIDATE_ALL_CODEBASE: true
+          DISABLE_ERRORS: true
+          LOG_LEVEL: DEBUG
 
   package:
     runs-on: ubuntu-latest
