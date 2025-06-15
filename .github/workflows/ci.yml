@@ -47,7 +47,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build Maven project
-        run: mvn clean install -DskipTests
+        run: mvn clean install -DskipTests || exit 1
 
   test:
     needs: build
