@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculatorService {
     /**
-    * Serviço que implementa operações matemáticas básicas.
+    * Serviço que implementa operações matemáticas básicas 
     * Este serviço é utilizado pelo CalculatorController para expor os endpoints da API
     */
     public double add(double a, double b) {
@@ -22,7 +22,7 @@ public class CalculatorService {
     
     public double divide(double a, double b) {
         if (b == 0) {
-            throw new ArithmeticException("Divisão por zero não é permitida");
+            throw new ArithmeticException("Divisão por zero não é permitida!");
         }
         return a / b;
     }
