@@ -24,14 +24,23 @@ on:
           - production
 
 jobs:
-    lint:
+  lint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     steps: 
       - uses: actions/checkout@v4
       - name: Super-Linter
         uses: super-linter/super-linter@v7.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_JAVA: true
+          VALIDATE_JAVA_GOOGLE_FORMAT: true
+          VALIDATE_MARKDOWN: true
+          JAVA_GOOGLE_FORMAT_OPTIONS: '--aosp'
+          DEFAULT_BRANCH: main
+          VALIDATE_ALL_CODEBASE: true
           
   checkout:
     needs: lint
@@ -104,6 +113,3 @@ jobs:
       - name: Deploy message
         run: |
           echo "Deploy realizado com sucesso para o ambiente ${{ github.event.inputs.environment }}!"
-
-  
-          
