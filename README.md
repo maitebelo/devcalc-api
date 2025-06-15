@@ -1,5 +1,7 @@
 # DevCalc API
 
+[![CI Pipeline](https://github.com/maitebelo/devcalc-api/actions/workflows/ci.yml/badge.svg)](https://github.com/maitebelo/devcalc-api/actions/workflows/ci.yml)
+
 ## Descrição
 DevCalc é uma API REST desenvolvida em Java que fornece operações matemáticas básicas. Este projeto serve como base para a implementação e validação de pipelines de CI/CD utilizando GitHub Actions.
 
@@ -59,5 +61,29 @@ mvn spring-boot:run
      - Test: executa os testes
      - Package: gera o arquivo .jar
      - Deploy: simula o deploy
-  
 
+## Depuração do CI
+
+1. **Problema**:
+   - O job `build` falhou devido ao comando `exit 1` adicionado. Assim, o job `build` mostra status "Failed" no Github Actions
+
+2. **Ferramentas**:
+   - GitHub Actions para ver o status dos jobs;
+   - Logs do job para ver a mensagem de erro específica;
+   - Editor do workflow para corrigir o comando problemático
+
+3. **Solução**:
+   - Removido o `|| exit 1` do comando de build
+   - O pipeline voltou a funcionar normalmente após a correção
+ 
+### Execução Automática vs Manual
+
+1. **Execução por Push**:
+   - Acionada automaticamente ao fazer push para as branches main ou dev
+   - Executa todos os jobs por padrão
+   - Útil para garantir que o código está sempre testado
+
+2. **Execução Manual**:
+   - Acionada pelo botão "Run workflow" na aba Actions
+   - Permite escolher quais verificações executar (testes e linting)
+   - Útil para testar partes específicas do pipeline 
