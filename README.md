@@ -18,49 +18,41 @@ DevCalc é uma API REST desenvolvida em Java que fornece operações matemática
 ## Como Executar Localmente
 
 1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/devcalc-api.git
-cd devcalc-api
-```
+   ```bash
+   git clone https://github.com/seu-usuario/devcalc-api.git
+   cd devcalc-api
+   ```
 
 2. Compile o projeto:
-```bash
-mvn clean install
-```
+   ```bash
+   mvn clean install
+   ```
 
 3. Execute a aplicação:
-```bash
-mvn spring-boot:run
-```
+   ```bash
+   mvn spring-boot:run
+   ```
 
-A API estará disponível em `http://localhost:8080`
+## GitHub Actions Workflows
 
-## Endpoints Disponíveis
+1. **Iniciação** (`.github/workflows/main.yml`)
+   - Executa quando:
+     - Push na main
+     - Criação de pull request para a main
+   - Passos:
+     - Checkout: baixa o código
+     - Mensagem: exibe "Pipeline iniciado"
 
-- `GET /add?a={valor1}&b={valor2}` - Realiza a soma de dois números
-- `GET /subtract?a={valor1}&b={valor2}` - Realiza a subtração de dois números
-- `GET /multiply?a={valor1}&b={valor2}` - Realiza a multiplicação de dois números
-- `GET /divide?a={valor1}&b={valor2}` - Realiza a divisão de dois números
+2. **CI Pipeline** (`.github/workflows/ci.yml`)
+   - Executa automaticamente quando:
+     - Push na main
+     - Criação de pull request para a main
+     - Execução manual pelo GitHub
+   - Passos:
+     - Checkout: baixa o código
+     - Build: compila o projeto
+     - Test: executa os testes
+     - Package: gera o arquivo .jar
+     - Deploy: simula o deploy
+  
 
-## Estrutura do Projeto
-```
-src/
-├── main/
-│   └── java/
-│       └── com/
-│           └── devcalc/
-└── test/
-    └── java/
-        └── com/
-            └── devcalc/
-```
-
-## Pipeline CI/CD
-O projeto inclui workflows do GitHub Actions para:
-- Verificação de código
-- Testes automatizados
-- Build
-- Empacotamento
-- Simulação de deploy
-
-Os workflows estão localizados no diretório `.github/workflows/` 
