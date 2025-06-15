@@ -18,15 +18,15 @@ DevCalc é uma API REST desenvolvida em Java que fornece operações matemática
 ## Como Executar Localmente
 
 1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/devcalc-api.git
-cd devcalc-api
-```
+   ```bash
+   git clone https://github.com/seu-usuario/devcalc-api.git
+   cd devcalc-api
+   ```
 
 2. Compile o projeto:
-```bash
-mvn clean install
-```
+   ```bash
+   mvn clean install
+   ```
 
 3. Execute a aplicação:
 ```bash
@@ -34,6 +34,11 @@ mvn spring-boot:run
 ``` 
 
 ## GitHub Actions Workflows  
+   ```bash
+   mvn spring-boot:run
+   ```
+
+## GitHub Actions Workflows
 
 1. **Iniciação** (`.github/workflows/main.yml`)
    - Executa quando:
