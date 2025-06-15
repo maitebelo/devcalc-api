@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 public class CalculatorService {
     /**
     * Serviço que implementa operações matemáticas básicas.
-    * Este serviço é utilizado pelo CalculatorController para expor os endpoints da API.
+    * Este serviço é utilizado pelo CalculatorController para expor os endpoints da API
     */
     public double add(double a, double b) {
         return a + b;
