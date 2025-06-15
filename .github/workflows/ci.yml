@@ -24,7 +24,17 @@ on:
           - production
 
 jobs:
+    lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v4
+      - name: Super-Linter
+        uses: super-linter/super-linter@v7.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
   checkout:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -88,9 +98,12 @@ jobs:
           path: target/*.jar
 
   deploy:
-    needs: [build, test]
+    needs: [build, test, package]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy message
         run: |
           echo "Deploy realizado com sucesso para o ambiente ${{ github.event.inputs.environment }}!"
+
+  
+          
