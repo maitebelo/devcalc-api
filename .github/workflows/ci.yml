@@ -47,7 +47,9 @@ jobs:
           distribution: 'adopt'
 
       - name: Build Maven project
-        run: mvn clean install -DskipTests || exit 1
+        run: |
+          echo "Forçando erro no build"
+          exit 1
 
   test:
     needs: build
