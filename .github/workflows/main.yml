@@ -15,5 +15,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Display message
-        run: echo "Pipeline iniciado" 
+      - name: Display message 
+        run: echo "Pipeline iniciado"  
