@@ -91,5 +91,7 @@ jobs:
     needs: [build, test]
     runs-on: ubuntu-latest
     steps:
-      - name: Display deploy message
-        run: echo "Deploy realizado com sucesso para o ambiente ${{ github.event.inputs.environment }}!"
+      - name: Display deploy message 
+        run: echo "Deploy realizado com sucesso para o ambiente ${{ github.event.inputs.environment }}!" 
+
+        run: echo "Deploy realizado com sucesso para o ambiente ${{ github.event.inputs.environment }}!" 
