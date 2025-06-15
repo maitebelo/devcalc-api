@@ -1,6 +1,6 @@
 # DevCalc API
 
-## Descrição do projeto
+## Descrição 
 DevCalc é uma API REST desenvolvida em Java que fornece operações matemáticas básicas. Este projeto serve para a implementação de pipelines de CI/CD utilizando GitHub Actions.
 
 ## Tecnologias Utilizadas
