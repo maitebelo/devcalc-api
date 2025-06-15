@@ -29,6 +29,11 @@ DevCalc é uma API REST desenvolvida em Java que fornece operações matemática
    ```
 
 3. Execute a aplicação:
+```bash
+mvn spring-boot:run
+``` 
+
+## GitHub Actions Workflows  
    ```bash
    mvn spring-boot:run
    ```
