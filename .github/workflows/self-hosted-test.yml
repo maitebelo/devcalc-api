@@ -13,8 +13,10 @@ jobs:
           systeminfo | Select-String "OS Name", "OS Version" 
           java -version 
 
-      - name: Additional software
+      - name: Install 7zip
         shell: powershell
-        run: | 
-          choco install -y curl 
-          curl --version
+        run: |
+          Write-Host "Installing 7zip using Chocolatey..."
+          choco install -y 7zip
+          Write-Host "`n7zip Version:"
+          7z i
