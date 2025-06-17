@@ -1,0 +1,36 @@
+name: Contextos e Escopos de Variáveis
+
+on:
+  workflow_dispatch: 
+
+env:
+  STAGE: test
+  MINHA_VARIAVEL: "Valor a nivel de WORKFLOW"
+
+jobs:
+  demonstrar-escopos:
+    runs-on: ubuntu-latest
+
+    env:
+      MINHA_VARIAVEL: "Valor a nivel de JOB"
+
+    steps:
+      - name: Contextos e variáveis iniciais
+        run: |
+          echo "Informações de Contexto"
+          echo "Usuario que iniciou o workflow: ${{ github.actor }}"
+          echo "Sistema Operacional do Runner: ${{ runner.os }}"
+          echo ""
+          echo "Variáveis de Ambiente"
+          echo "Valor da variável STAGE: $STAGE"
+          echo "Valor de MINHA_VARIAVEL: $MINHA_VARIAVEL"
+
+      - name: Variável com escopo de STEP
+        env:
+          MINHA_VARIAVEL: "Valor a nivel de STEP"
+        run: |
+          echo "Valor de MINHA_VARIAVEL dentro deste step: $MINHA_VARIAVEL"
+
+      - name: Variável apos o escopo do step
+        run: |
+          echo "Valor de MINHA_VARIAVEL neste outro step: $MINHA_VARIAVEL"
