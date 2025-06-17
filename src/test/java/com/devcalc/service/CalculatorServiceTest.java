@@ -39,4 +39,12 @@ class CalculatorServiceTest {
     void testDivideByZero() {
         assertThrows(ArithmeticException.class, () -> calculatorService.divide(10.0, 0.0));
     }
+
+    @Test
+    void testSquareRoot() {
+        assertEquals(4.0, calculatorService.squareRoot(16.0));
+        assertEquals(0.0, calculatorService.squareRoot(0.0));
+        assertEquals(1.4142135623730951, calculatorService.squareRoot(2.0));
+    }
+
 }

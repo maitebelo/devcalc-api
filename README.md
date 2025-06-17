@@ -31,14 +31,26 @@ DevCalc é uma API REST desenvolvida em Java que fornece operações matemática
    ```
 
 3. Execute a aplicação:
-```bash
-mvn spring-boot:run
-``` 
-
-## GitHub Actions Workflows  
    ```bash
    mvn spring-boot:run
    ```
+
+## Endpoints Disponíveis
+
+A API oferece os seguintes endpoints:
+
+- `GET /add?a={valor}&b={valor}` - Soma dois números
+- `GET /subtract?a={valor}&b={valor}` - Subtrai dois números
+- `GET /multiply?a={valor}&b={valor}` - Multiplica dois números
+- `GET /divide?a={valor}&b={valor}` - Divide dois números
+- `GET /sqrt?x={valor}` - Calcula a raiz quadrada de um número
+
+Exemplo de uso:
+```bash
+# Calcular a raiz quadrada de 16
+curl http://localhost:8080/sqrt?x=16
+# Resultado: 4.0
+```
 
 ## GitHub Actions Workflows
 
@@ -61,6 +73,27 @@ mvn spring-boot:run
      - Test: executa os testes
      - Package: gera o arquivo .jar
      - Deploy: simula o deploy
+
+3. **Runner Self-Hosted** (`.github/workflows/self-hosted-test.yml`)
+- Configuração de um runner auto-hospedado para execução de workflows
+- **Como testar**:
+  1. Actions > Self-hosted Runner Test > Run workflow
+  3. Verifique a execução no runner local
+
+4. **Variáveis e Secrets** (`.github/workflows/variables-test.yml`) 
+- Implementação de variáveis e secrets no workflow
+- **Como testar**:
+  1. Actions > Variables and Secrets Test > Run workflow
+  3. Verifique a criação de issues baseada nas condições
+
+5. **Permissões do GITHUB_TOKEN** (`.github/workflows/token-permissions.yml`)
+- Configuração de permissões para criação de issues
+- **Como testar**:
+  1. Actions > Exemplo de Permissões e GITHUB_TOKEN > Run workflow
+  3. Verifique a criação automática de issues em caso de falha
+
+### Nova Funcionalidade - Raiz Quadrada
+- Implementação do endpoint `/sqrt` para cálculo de raiz quadrada
 
 ## Depuração do CI
 

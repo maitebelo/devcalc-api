@@ -11,6 +11,7 @@ public class CalculatorService {
     * - Multiplicação
     * - Divisão
     * - Média
+    * - Raiz Quadrada
     * Este serviço é utilizado pelo CalculatorController para expor os endpoints da API.
     */
     public double add(double a, double b) {
@@ -36,5 +37,12 @@ public class CalculatorService {
  
     public double average(double a, double b) {
         return (a + b) / 2;
+    }
+
+    public double squareRoot(double x) {
+        if (x < 0) {
+            throw new ArithmeticException("Não é possível calcular a raiz quadrada de um número negativo!");
+        }
+        return Math.sqrt(x);
     }
 } 
