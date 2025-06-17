@@ -8,26 +8,25 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Check system info
+        shell: pwsh
         run: |
-          echo "System Information:"
-          uname -a
-          echo "Java Version:"
+          Write-Host "System Information:"
+          systeminfo | Select-String "OS Name", "OS Version"
+          Write-Host "`nJava Version:"
           java -version
           
       - name: Install additional software
+        shell: pwsh
         run: |
-          # For Windows
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            choco install -y curl
-            curl --version
-          # For Linux
-          elif [ "$RUNNER_OS" == "Linux" ]; then
-            sudo apt-get update
-            sudo apt-get install -y curl
-            curl --version
-          fi
+          Write-Host "Installing curl using Chocolatey..."
+          choco install -y curl
+          Write-Host "`nCurl Version:"
+          curl --version
           
       - name: Create test file
+        shell: pwsh
         run: |
-          echo "This is a test file created by the self-hosted runner" > test.txt
-          cat test.txt
+          Write-Host "Creating test file..."
+          "This is a test file created by the self-hosted runner" | Out-File -FilePath test.txt
+          Write-Host "`nFile contents:"
+          Get-Content test.txt
