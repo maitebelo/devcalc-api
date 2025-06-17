@@ -26,7 +26,7 @@ public class CalculatorService {
     }
     
     public double divide(double a, double b) {
-        /**Exceção para divisão por zero
+        /**Exceção para divisão por zero - impossível dividir por zero	
         */
         if (b == 0) {
             throw new ArithmeticException("Divisão por zero não é permitida!");
