@@ -19,11 +19,11 @@ jobs:
         run: |
           echo ----- Java Version -----
           java --version
-          
-      - name: Create test file
-        shell: pwsh
+
+      - name: Additional software
+        shell: powershell
         run: |
-          Write-Host "Creating test file..."
-          "Test file" | Out-File -FilePath test.txt
-          Write-Host "`nFile:"
-          Get-Content test.txt
+          Write-Host "Installing curl using Chocolatey..."
+          choco install -y curl
+          Write-Host "`nCurl Version:"
+          curl --version
