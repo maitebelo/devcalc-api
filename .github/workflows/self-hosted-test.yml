@@ -8,22 +8,13 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Check system info
-        shell: pwsh
-        run: |
-          Write-Host "System Information:"
-          systeminfo | Select-String "OS Name", "OS Version"
-          Write-Host "`nJava Version:"
-          java -version
-          
-      - name: Checking Java Version
-        run: |
-          echo ----- Java Version -----
-          java --version
+        shell: powershell
+        run: | 
+          systeminfo | Select-String "OS Name", "OS Version" 
+          java -version 
 
       - name: Additional software
         shell: powershell
-        run: |
-          Write-Host "Installing curl using Chocolatey..."
-          choco install -y curl
-          Write-Host "`nCurl Version:"
+        run: | 
+          choco install -y curl 
           curl --version
