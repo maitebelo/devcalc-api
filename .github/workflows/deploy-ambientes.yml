@@ -11,7 +11,7 @@ jobs:
   deploy-dev:
     if: github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
-    environment: DEV
+    environment: dev
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
   deploy-prod:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    environment: PROD
+    environment: prod
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
