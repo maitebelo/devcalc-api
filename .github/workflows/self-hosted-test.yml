@@ -1,0 +1,33 @@
+name: Self-hosted Runner Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+    steps:
+      - name: Check system info
+        run: |
+          echo "System Information:"
+          uname -a
+          echo "Java Version:"
+          java -version
+          
+      - name: Install additional software
+        run: |
+          # For Windows
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            choco install -y curl
+            curl --version
+          # For Linux
+          elif [ "$RUNNER_OS" == "Linux" ]; then
+            sudo apt-get update
+            sudo apt-get install -y curl
+            curl --version
+          fi
+          
+      - name: Create test file
+        run: |
+          echo "This is a test file created by the self-hosted runner" > test.txt
+          cat test.txt
