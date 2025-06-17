@@ -1,4 +1,5 @@
-name: Exemplo de Permissões e GITHUB_TOKEN
+name: Criar Issue em Caso de Falha
+
 on:
   workflow_dispatch:
 
@@ -9,16 +10,22 @@ jobs:
   simular_deploy:
     runs-on: ubuntu-latest
     steps:
+      # Simula uma tarefa que pode falhar
       - name: Simular um deploy
         id: deploy
         run: |
-          echo "Tentando realizar o deploy..."
+          echo "Simulando deploy"
           exit 1
 
+      # Cria a issue usando o GITHUB_TOKEN
+      # Só executa se o passo anterior (com id: deploy) falhar
       - name: Criar issue sobre a falha
+        # A condição verifica se algum passo anterior no job falhou.
         if: failure()
         uses: actions/github-script@v7
         with:
+          # O script abaixo usa o cliente 'octokit' do GitHub para criar a issue.
+          # Ele é autenticado automaticamente pelo GITHUB_TOKEN.
           script: |
             github.rest.issues.create({
               owner: context.repo.owner,
