@@ -16,7 +16,7 @@ jobs:
           java -version
           
       - name: Checking Java Version
-      - run: |
+        run: |
           echo ----- Java Version -----
           java --version
           
