@@ -1,0 +1,39 @@
+name: Deploy em ambientes (dev e prod)
+ 
+on:
+  push:
+    branches:
+      - dev
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-dev:
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy para o ambiente de dev
+        run: |
+          echo "Deploy no ambiente de desenvolvimento"
+          echo "URL do servidor de dev: ${{ vars.SERVER_URL }}"
+          echo "Deploy em dev concluído"
+
+  deploy-prod:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy para o ambiente de prod
+        env:
+          API_KEY: ${{ secrets.SECRET_API }}
+        run: |
+          echo "Deploy no ambiente de produção"
+          echo "Usando a API Key de produção --key $API_KEY" 
+          echo "Deploy em prod concluído"
